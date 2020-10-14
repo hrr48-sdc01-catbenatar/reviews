@@ -57,3 +57,15 @@ app.get('/api/reviews/:id', (req, res) => {
     }
   })
 });
+//////////////CRUD Operations/////////////////////
+app.post('/api/reviews/:id', (req, res) => {
+  Reviews.create(req.body)
+    .then(result => {
+      res.json({id: result._id})
+    })
+    .catch(err => {
+      console.log('following error while procesing POST: ', err);
+      res.status(500);
+      res.send('Internal Server Error');
+    })
+})

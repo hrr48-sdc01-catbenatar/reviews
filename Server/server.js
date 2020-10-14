@@ -58,6 +58,7 @@ app.get('/api/reviews/:id', (req, res) => {
   })
 });
 //////////////CRUD Operations/////////////////////
+// CREATE operation
 app.post('/api/reviews/:id', (req, res) => {
   Reviews.create(req.body)
     .then(result => {
@@ -70,6 +71,7 @@ app.post('/api/reviews/:id', (req, res) => {
     })
 });
 
+// DELETE operation
 app.delete('/api/reviews/:id', (req, res) => {
   console.log('DELETE /api/reviews/:id')
   // this would be the comment id
@@ -79,4 +81,35 @@ app.delete('/api/reviews/:id', (req, res) => {
       res.json({id: idToDelete})
     })
     .catch(err => console.log('following error for delete: ', err));
-})
+});
+
+// UPDATE operation
+app.put('/api/reviews/:id', (req, res) => {
+  console.log('PUT /api/reviews/:id');
+  Reviews.exists({_id: req.body._id})
+    .then(result => {
+      if (result) {
+        console.log('found the item');
+        return Reviews.replaceOne({_id: req.body._id}, req.body)
+          .then(result => {
+            console.log(result);
+            res.status(200)
+            res.json({id: result._id})
+          })
+      } else {
+        console.log('item not found. creating a new doc');
+        return Reviews.create(req.body)
+          .then(result => {
+            console.log(result);
+            res.status(201);
+            res.json({id: result._id})
+          })
+      }
+    })
+    .catch(err => {
+      console.log('following error occured while trying the PUT operation: ', err)
+      res.status(500);
+      res.send('Internal Server Error');
+    })
+
+});

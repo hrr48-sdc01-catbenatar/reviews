@@ -68,4 +68,15 @@ app.post('/api/reviews/:id', (req, res) => {
       res.status(500);
       res.send('Internal Server Error');
     })
+});
+
+app.delete('/api/reviews/:id', (req, res) => {
+  console.log('DELETE /api/reviews/:id')
+  // this would be the comment id
+  const idToDelete = req.body.id;
+  Reviews.deleteOne({_id: idToDelete})
+    .then(result => {
+      res.json({id: idToDelete})
+    })
+    .catch(err => console.log('following error for delete: ', err));
 })

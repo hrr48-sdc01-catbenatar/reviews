@@ -37,3 +37,8 @@ COPY tarjay_reviews(
 )
 FROM './newSeed.csv'
 WITH DELIMITER=',' AND HEADER = TRUE;
+
+/*
+reference command for bulk upload using dsbulk:
+~/dsBulk/dsbulk-1.7.0/bin/dsbulk load -url newSeed.csv -k testing_cassandra -t tarjay_reviews -header true
+*/

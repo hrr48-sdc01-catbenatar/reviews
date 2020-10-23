@@ -1,6 +1,6 @@
 const faker = require('faker');
 const fs = require('fs');
-const file = fs.createWriteStream('./newSeed_small.csv');
+const file = fs.createWriteStream('./newSeed.csv');
 
 file.write('id,created_at,author,stars,body,would_recommend,title,comfort,style,value,sizing,helpful_votes,product_id' + '\n');
 
@@ -27,7 +27,7 @@ let createdAt = getNextDate();
 let data = '';
 
 function writeOneMillionTimes(writer) {
-  let i = 1000;
+  let i = 100000000;
   let chunk = 10000;
   let max = i;
   write();

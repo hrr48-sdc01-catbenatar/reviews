@@ -1,5 +1,5 @@
 CREATE TABLE tarjay_reviews (
-  id INT PRIMARY KEY,
+  id INT,
   created_at VARCHAR(16),
   author VARCHAR(256),
   stars INT,
@@ -11,7 +11,8 @@ CREATE TABLE tarjay_reviews (
   value INT,
   sizing INT,
   helpful_votes INT,
-  product_id INT
+  product_id INT,
+  PRIMARY KEY (product_id, id)
 );
 
 COPY tarjay_reviews(

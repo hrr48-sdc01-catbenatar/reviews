@@ -26,9 +26,11 @@ class Reviews extends React.Component {
   componentDidMount() {
 
     let productId = window.location.pathname.slice(1) || 1;
+    console.log('product_id: ', productId);
 
     fetch(`http://localhost:3004/api/reviews/${productId}`)
       .then(data => {
+        console.log(data)
         return data.json();
       })
       .then(data => {

@@ -2,3 +2,4 @@ node_modules
 *.csv
 *.tsv
 *logs*
+.env

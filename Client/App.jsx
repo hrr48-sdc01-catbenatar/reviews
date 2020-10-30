@@ -30,7 +30,6 @@ class Reviews extends React.Component {
 
     fetch(`http://localhost:3004/api/reviews/${productId}`)
       .then(data => {
-        console.log(data)
         return data.json();
       })
       .then(data => {

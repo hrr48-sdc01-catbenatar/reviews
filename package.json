@@ -30,12 +30,14 @@
     "moment": "^2.29.0",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
+    "newrelic": "^6.13.2",
     "nodemon": "^2.0.4",
     "pg": "^8.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.9.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",

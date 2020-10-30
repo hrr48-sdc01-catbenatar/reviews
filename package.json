@@ -2,8 +2,10 @@
   "name": "name",
   "version": "1.0.0",
   "description": "description",
-  "main": "./Server/server.js",
+  "main": "./Server/newServer.js",
   "scripts": {
+    "start:new": "node ./Server/newServer.js",
+    "start:cassandra": "node ./Server/cassandraServer.js",
     "start": "nodemon server.js",
     "build": "webpack -d --watch",
     "db:seed": "node DB/seed.js",
@@ -27,12 +29,15 @@
     "http-proxy-middleware": "^1.0.5",
     "moment": "^2.29.0",
     "mongoose": "^5.10.7",
+    "morgan": "^1.10.0",
+    "newrelic": "^6.13.2",
     "nodemon": "^2.0.4",
     "pg": "^8.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.9.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",

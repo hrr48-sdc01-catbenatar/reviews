@@ -3,9 +3,13 @@
 CREATE KEYSPACE IF NOT EXISTS testing_cassandra
 WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': 3 }
 
+CREATE KEYSPACE IF NOT EXISTS tarjay
+WITH replication = { 'class': 'NetworkTopologyStrategy', 'replication_factor': 2 }
+
 CREATE TABLE tarjay_reviews (
-  id int,
-  created_at text,
+  id uuid,
+  created_at date,
+  created_at_timestamp time,
   author text,
   stars int,
   body text,
@@ -17,12 +21,13 @@ CREATE TABLE tarjay_reviews (
   sizing int,
   helpful_votes int,
   product_id int,
-  PRIMARY KEY((product_id), id)
-) WITH CLUSTERING ORDER BY (id DESC);
+  PRIMARY KEY((product_id), created_at, created_at_timestamp, author, id)
+) WITH CLUSTERING ORDER BY (created_at DESC, created_at_timestamp DESC, author ASC, id ASC);
 
 COPY tarjay_reviews(
   id,
   created_at,
+  created_at_timestamp,
   author,
   stars,
   body,
